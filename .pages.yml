@@ -1,0 +1,619 @@
+# Настройка админки Pages CMS (https://pagescms.org)
+media:
+  input: media
+  output: /media
+content:
+- name: profile
+  label: Главная и контакты
+  type: file
+  path: data/profile.json
+  format: json
+  fields:
+  - name: first_name
+    label: Имя
+    type: object
+    fields:
+    - name: ru
+      label: Русский
+      type: string
+    - name: en
+      label: English
+      type: string
+  - name: last_name
+    label: Фамилия
+    type: object
+    fields:
+    - name: ru
+      label: Русский
+      type: string
+    - name: en
+      label: English
+      type: string
+  - name: eyebrow
+    label: Строка над именем
+    type: object
+    fields:
+    - name: ru
+      label: Русский
+      type: string
+    - name: en
+      label: English
+      type: string
+  - name: lead
+    label: Фраза о себе
+    type: object
+    fields:
+    - name: ru
+      label: Русский
+      type: text
+    - name: en
+      label: English
+      type: text
+  - name: badge_photo
+    label: Фото на бейдже
+    type: image
+    options:
+      extensions:
+      - jpg
+      - jpeg
+      - png
+      - webp
+      rename: true
+    description: Лучше на светлом фоне, вертикальное
+  - name: badge_top
+    label: 'Бейдж: надпись сверху'
+    type: object
+    fields:
+    - name: ru
+      label: Русский
+      type: string
+    - name: en
+      label: English
+      type: string
+  - name: badge_label
+    label: 'Бейдж: красная плашка'
+    type: object
+    fields:
+    - name: ru
+      label: Русский
+      type: string
+    - name: en
+      label: English
+      type: string
+  - name: badge_role
+    label: 'Бейдж: компетенция'
+    type: object
+    fields:
+    - name: ru
+      label: Русский
+      type: string
+    - name: en
+      label: English
+      type: string
+  - name: badge_rows
+    label: 'Бейдж: строки'
+    type: object
+    list:
+      collapsible:
+        collapsed: true
+        summary: Строка {index}
+    fields:
+    - name: label
+      label: Слева
+      type: object
+      fields:
+      - name: ru
+        label: Русский
+        type: string
+      - name: en
+        label: English
+        type: string
+    - name: value
+      label: Справа
+      type: object
+      fields:
+      - name: ru
+        label: Русский
+        type: string
+      - name: en
+        label: English
+        type: string
+  - name: email
+    label: Почта
+    type: string
+  - name: city
+    label: Город
+    type: object
+    fields:
+    - name: ru
+      label: Русский
+      type: string
+    - name: en
+      label: English
+      type: string
+  - name: contacts_lead
+    label: Текст на странице контактов
+    type: object
+    fields:
+    - name: ru
+      label: Русский
+      type: text
+    - name: en
+      label: English
+      type: text
+  - name: resume
+    label: Резюме (PDF)
+    type: file
+    options:
+      extensions:
+      - pdf
+      rename: false
+  - name: socials
+    label: Соцсети и ссылки
+    type: object
+    list:
+      collapsible:
+        collapsed: true
+        summary: '{fields.name}'
+    fields:
+    - name: name
+      label: Название
+      type: string
+    - name: name_en
+      label: Название на английском
+      type: string
+    - name: url
+      label: Ссылка
+      type: string
+      description: Полная ссылка, например https://t.me/timofeygorev
+- name: work
+  label: Работа
+  type: file
+  path: data/work.json
+  format: json
+  fields:
+  - name: eyebrow
+    label: Строка над заголовком
+    type: object
+    fields:
+    - name: ru
+      label: Русский
+      type: string
+    - name: en
+      label: English
+      type: string
+  - name: lead
+    label: Вступление
+    type: object
+    fields:
+    - name: ru
+      label: Русский
+      type: text
+    - name: en
+      label: English
+      type: text
+  - name: now_label
+    label: 'Сейчас: подпись'
+    type: object
+    fields:
+    - name: ru
+      label: Русский
+      type: string
+    - name: en
+      label: English
+      type: string
+  - name: now_title
+    label: 'Сейчас: должность'
+    type: object
+    fields:
+    - name: ru
+      label: Русский
+      type: string
+    - name: en
+      label: English
+      type: string
+  - name: now_text
+    label: 'Сейчас: описание'
+    type: object
+    fields:
+    - name: ru
+      label: Русский
+      type: text
+    - name: en
+      label: English
+      type: text
+  - name: now_tags
+    label: 'Сейчас: дисциплины'
+    type: object
+    list:
+      collapsible:
+        collapsed: true
+        summary: '{fields.ru}'
+    fields:
+    - name: ru
+      label: Русский
+      type: string
+    - name: en
+      label: English
+      type: string
+  - name: experience
+    label: Опыт
+    type: object
+    list:
+      collapsible:
+        collapsed: true
+        summary: '{fields.when}'
+    fields: &id001
+    - name: when
+      label: Годы
+      type: string
+      description: 'Например: 2024–2026'
+    - name: title
+      label: Заголовок
+      type: object
+      fields:
+      - name: ru
+        label: Русский
+        type: string
+      - name: en
+        label: English
+        type: string
+    - name: text
+      label: Описание
+      type: object
+      fields:
+      - name: ru
+        label: Русский
+        type: text
+      - name: en
+        label: English
+        type: text
+  - name: education
+    label: Образование
+    type: object
+    list:
+      collapsible:
+        collapsed: true
+        summary: '{fields.when}'
+    fields: *id001
+  - name: skills
+    label: Навыки
+    type: object
+    list:
+      collapsible:
+        collapsed: true
+        summary: '{fields.items}'
+    fields:
+    - name: group
+      label: Группа
+      type: object
+      fields:
+      - name: ru
+        label: Русский
+        type: string
+      - name: en
+        label: English
+        type: string
+    - name: items
+      label: Навыки через запятую
+      type: string
+- name: print
+  label: 3D-мастерская
+  type: file
+  path: data/print.json
+  format: json
+  fields:
+  - name: eyebrow
+    label: Строка над заголовком
+    type: object
+    fields:
+    - name: ru
+      label: Русский
+      type: string
+    - name: en
+      label: English
+      type: string
+  - name: lead
+    label: Вступление
+    type: object
+    fields:
+    - name: ru
+      label: Русский
+      type: text
+    - name: en
+      label: English
+      type: text
+  - name: order_url
+    label: Ссылка для заказа
+    type: string
+  - name: order_label
+    label: Текст кнопки заказа
+    type: object
+    fields:
+    - name: ru
+      label: Русский
+      type: string
+    - name: en
+      label: English
+      type: string
+  - name: photo
+    label: Большое фото вверху
+    type: image
+    options:
+      extensions:
+      - jpg
+      - jpeg
+      - png
+      - webp
+      rename: true
+  - name: cards
+    label: Карточки (принтер, программы)
+    type: object
+    list:
+      collapsible:
+        collapsed: true
+        summary: Пункт {index}
+    fields:
+    - name: label
+      label: Подпись
+      type: object
+      fields:
+      - name: ru
+        label: Русский
+        type: string
+      - name: en
+        label: English
+        type: string
+    - name: title
+      label: Заголовок
+      type: object
+      fields:
+      - name: ru
+        label: Русский
+        type: string
+      - name: en
+        label: English
+        type: string
+    - name: text
+      label: Текст
+      type: object
+      fields:
+      - name: ru
+        label: Русский
+        type: text
+      - name: en
+        label: English
+        type: text
+  - name: works
+    label: Работы
+    type: object
+    list:
+      collapsible:
+        collapsed: true
+        summary: Пункт {index}
+    fields:
+    - name: image
+      label: Фото работы
+      type: image
+      options:
+        extensions:
+        - jpg
+        - jpeg
+        - png
+        - webp
+        rename: true
+      description: Лучше горизонтальное 4:3
+    - name: title
+      label: Название
+      type: object
+      fields:
+      - name: ru
+        label: Русский
+        type: string
+      - name: en
+        label: English
+        type: string
+    - name: text
+      label: Описание
+      type: object
+      fields:
+      - name: ru
+        label: Русский
+        type: text
+      - name: en
+        label: English
+        type: text
+- name: about
+  label: Обо мне
+  type: file
+  path: data/about.json
+  format: json
+  fields:
+  - name: eyebrow
+    label: Строка над заголовком
+    type: object
+    fields:
+    - name: ru
+      label: Русский
+      type: string
+    - name: en
+      label: English
+      type: string
+  - name: lead
+    label: Вступление
+    type: object
+    fields:
+    - name: ru
+      label: Русский
+      type: text
+    - name: en
+      label: English
+      type: text
+  - name: portrait
+    label: Портрет
+    type: image
+    options:
+      extensions:
+      - jpg
+      - jpeg
+      - png
+      - webp
+      rename: true
+  - name: gold_label
+    label: 'Красный блок: подпись'
+    type: object
+    fields:
+    - name: ru
+      label: Русский
+      type: string
+    - name: en
+      label: English
+      type: string
+  - name: gold_title
+    label: 'Красный блок: заголовок'
+    type: object
+    fields:
+    - name: ru
+      label: Русский
+      type: string
+    - name: en
+      label: English
+      type: string
+  - name: gold_text
+    label: 'Красный блок: текст'
+    type: object
+    fields:
+    - name: ru
+      label: Русский
+      type: text
+    - name: en
+      label: English
+      type: text
+  - name: quote
+    label: Цитата из СМИ
+    type: text
+  - name: quote_source
+    label: Источник цитаты
+    type: string
+  - name: quote_url
+    label: Ссылка на цитату
+    type: string
+  - name: cards
+    label: Карточки
+    type: object
+    list:
+      collapsible:
+        collapsed: true
+        summary: Пункт {index}
+    fields:
+    - name: title
+      label: Заголовок
+      type: object
+      fields:
+      - name: ru
+        label: Русский
+        type: string
+      - name: en
+        label: English
+        type: string
+    - name: text
+      label: Текст
+      type: object
+      fields:
+      - name: ru
+        label: Русский
+        type: text
+      - name: en
+        label: English
+        type: text
+  - name: awards
+    label: Награды
+    type: object
+    list:
+      collapsible:
+        collapsed: true
+        summary: '{fields.ru}'
+    fields:
+    - name: ru
+      label: Русский
+      type: string
+    - name: en
+      label: English
+      type: string
+  - name: projects
+    label: Свои проекты
+    type: object
+    list:
+      collapsible:
+        collapsed: true
+        summary: Пункт {index}
+    fields:
+    - name: title
+      label: Название
+      type: object
+      fields:
+      - name: ru
+        label: Русский
+        type: string
+      - name: en
+        label: English
+        type: string
+    - name: text
+      label: Описание
+      type: object
+      fields:
+      - name: ru
+        label: Русский
+        type: text
+      - name: en
+        label: English
+        type: text
+  - name: sport_label
+    label: 'Спорт: подпись'
+    type: object
+    fields:
+    - name: ru
+      label: Русский
+      type: string
+    - name: en
+      label: English
+      type: string
+  - name: sport_text
+    label: 'Спорт: текст'
+    type: object
+    fields:
+    - name: ru
+      label: Русский
+      type: text
+    - name: en
+      label: English
+      type: text
+- name: news
+  label: Новости обо мне
+  type: file
+  path: data/news.json
+  format: json
+  list: true
+  fields:
+  - name: source
+    label: Издание
+    type: string
+  - name: date
+    label: Дата
+    type: date
+  - name: title
+    label: Заголовок статьи
+    type: string
+  - name: url
+    label: Ссылка
+    type: string
+  - name: note
+    label: Короткая подпись
+    type: object
+    fields:
+    - name: ru
+      label: Русский
+      type: string
+    - name: en
+      label: English
+      type: string
