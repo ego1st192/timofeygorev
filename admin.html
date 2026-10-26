@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Админка сайта</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;700;800&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+:root{
+  --bg:#E8EEF3;--surface:#FFFFFF;--ink:#0E1A26;--muted:#4A5B6B;--line:#D3DDE6;--field:#F5F8FA;
+  --link:#0B6FA8;--flag:#1A9BDB;--red:#D3261F;--ok:#1E7A46;
+  --f-body:'Onest',system-ui,-apple-system,'Segoe UI',sans-serif;--f-mono:'IBM Plex Mono',ui-monospace,Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.45}
+.wrap{max-width:900px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{margin:0}
+a{color:var(--link)}
+:focus-visible{outline:3px solid var(--flag);outline-offset:2px}
+.mono{font-family:var(--f-mono);font-size:13px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+header.top{background:var(--ink);color:#E8EEF3}
+header.top .wrap{padding-block:14px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px}
+header.top b{font-weight:800}
+header.top a{color:#E8EEF3}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:44px;padding:0 18px;border-radius:12px;border:2px solid var(--ink);background:var(--surface);color:var(--ink);font:inherit;font-weight:700;cursor:pointer;text-decoration:none}
+.btn.solid{background:var(--ink);color:#FFFFFF}
+.btn.red{background:var(--red);border-color:var(--red);color:#FFFFFF}
+.btn.small{min-height:36px;padding:0 12px;font-size:14px;border-width:1.5px;border-radius:10px}
+.btn:disabled{opacity:.5;cursor:default}
+.btn.ghost{border-color:transparent;background:transparent;color:#E8EEF3;padding:0 8px}
+.card{background:var(--surface);border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:14px}
+.tabs{display:flex;flex-wrap:wrap;gap:6px;padding-block:18px 14px}
+.tabs button{min-height:42px;padding:0 16px;border-radius:12px;border:0;background:transparent;color:var(--muted);font:inherit;font-weight:600;cursor:pointer}
+.tabs button[aria-selected="true"]{background:var(--surface);color:var(--ink)}
+.tabs button .dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--red);margin-left:6px;vertical-align:middle}
+.field{display:flex;flex-direction:column;gap:6px}
+.field>label,.field>.lbl{font-weight:700;font-size:15px}
+.hint{font-size:13px;color:var(--muted)}
+input[type=text],input[type=url],input[type=email],input[type=date],input[type=password],textarea{width:100%;min-height:42px;padding:9px 12px;border:1.5px solid var(--line);border-radius:10px;background:var(--field);color:var(--ink);font:inherit}
+textarea{min-height:84px;resize:vertical}
+.pair{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:8px}
+.pair .tag{font-family:var(--f-mono);font-size:11px;color:var(--muted);margin-bottom:3px;display:block}
+.group{border:1.5px solid var(--line);border-radius:14px;padding:14px;display:flex;flex-direction:column;gap:10px}
+details.item{border:1.5px solid var(--line);border-radius:12px;background:var(--surface)}
+details.item>summary{list-style:none;cursor:pointer;padding:10px 12px;display:flex;align-items:center;gap:8px;min-height:44px}
+details.item>summary::-webkit-details-marker{display:none}
+details.item>summary .t{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:600}
+details.item>summary .arrow{transition:transform .15s}
+details.item[open]>summary .arrow{transform:rotate(90deg)}
+details.item .body{padding:4px 12px 14px;display:flex;flex-direction:column;gap:12px}
+.ibtn{width:34px;height:34px;border-radius:8px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer;font-size:15px;flex:0 0 auto}
+.ibtn:hover{border-color:var(--ink)}
+.ibtn.del:hover{border-color:var(--red);color:var(--red)}
+.media{display:flex;flex-wrap:wrap;align-items:center;gap:12px}
+.media img{width:120px;height:90px;object-fit:cover;border-radius:10px;background:var(--field);border:1px solid var(--line)}
+.media .ph{width:120px;height:90px;border-radius:10px;background:var(--field);border:1.5px dashed var(--line);display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--muted);text-align:center}
+.media .path{font-family:var(--f-mono);font-size:12px;color:var(--muted);word-break:break-all}
+.bar{position:sticky;bottom:0;background:var(--ink);color:#E8EEF3;margin-top:20px}
+.bar .wrap{padding-block:12px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px}
+.bar .btn.solid{background:var(--flag);border-color:var(--flag);color:var(--ink)}
+.msg{font-size:15px}
+.msg.ok{color:#7FE0A8}.msg.err{color:#FF9A94}
+.login{max-width:560px;margin:40px auto}
+.login ol{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px}
+.err-box{background:#FDECEA;color:#8A1C16;border-radius:10px;padding:10px 12px;font-size:15px}
+.ok-box{background:#E6F4EC;color:#14532D;border-radius:10px;padding:10px 12px;font-size:15px}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <span><b>Админка</b> <span id="repo-label" style="opacity:.7"></span></span>
+    <span style="display:flex;gap:6px;flex-wrap:wrap">
+      <a class="btn ghost" href="./" target="_blank" rel="noopener">Открыть сайт ↗</a>
+      <button class="btn ghost" id="logout" type="button" hidden>Выйти</button>
+    </span>
+  </div>
+</header>
+
+<!-- ВХОД -->
+<section id="login" class="wrap" hidden>
+  <div class="card login">
+    <h1 style="font-size:26px;font-weight:800">Вход в админку</h1>
+    <p>Админка сохраняет изменения прямо в твой репозиторий на GitHub. Для этого нужен ключ доступа (токен). Его делают один раз.</p>
+    <ol>
+      <li>Открой <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">создание токена на GitHub ↗</a>.</li>
+      <li>Token name: любое, например «Админка сайта». Expiration: 1 год.</li>
+      <li>Repository access: <b>Only select repositories</b>, выбери <b>timofeygorev</b>.</li>
+      <li>Permissions: найди <b>Contents</b> и поставь <b>Read and write</b>.</li>
+      <li>Нажми <b>Generate token</b>, скопируй токен и вставь ниже.</li>
+    </ol>
+    <div class="field"><label for="in-token">Токен</label><input type="password" id="in-token" autocomplete="off" placeholder="github_pat_..."></div>
+    <div class="pair">
+      <div class="field"><label for="in-owner">Логин GitHub</label><input type="text" id="in-owner" value="ego1st192"></div>
+      <div class="field"><label for="in-repo">Репозиторий</label><input type="text" id="in-repo" value="timofeygorev"></div>
+    </div>
+    <div id="login-err" class="err-box" hidden></div>
+    <button class="btn solid" id="btn-login" type="button">Войти</button>
+    <p class="hint">Токен хранится только в этом браузере. Никому его не показывай. Если потеряешь, просто создай новый.</p>
+  </div>
+</section>
+
+<!-- РЕДАКТОР -->
+<section id="editor" hidden>
+  <div class="wrap">
+    <div class="tabs" role="tablist" id="tabs"></div>
+    <div id="loading" class="card">Загружаю данные…</div>
+    <div id="form" class="card" hidden></div>
+  </div>
+  <div class="bar">
+    <div class="wrap">
+      <span class="msg" id="msg" role="status" aria-live="polite"></span>
+      <span style="display:flex;gap:8px;flex-wrap:wrap">
+        <button class="btn small" id="btn-reload" type="button" style="background:transparent;color:#E8EEF3;border-color:#E8EEF3">Отменить правки</button>
+        <button class="btn solid" id="btn-save" type="button">Сохранить раздел</button>
+      </span>
+    </div>
+  </div>
+</section>
+
+<script>
+/* ---------- СХЕМА: какие поля есть в каждом разделе ---------- */
+const BI = (k, l, sub = 'string', hint) => ({ k, l, t: 'bi', sub, hint });
+const S = (k, l, t = 'string', hint) => ({ k, l, t, hint });
+const IMG = (k, l, hint) => ({ k, l, t: 'image', hint });
+const FILE = (k, l, hint) => ({ k, l, t: 'file', hint });
+const LIST = (k, l, fields, sum, hint) => ({ k, l, t: 'list', fields, sum, hint });
+const TL = [S('when', 'Годы', 'string', 'Например: 2024–2026'), BI('title', 'Заголовок'), BI('text', 'Описание', 'text')];
+const RUEN = [S('ru', 'Русский'), S('en', 'English')];
+
+const SECTIONS = [
+  { id: 'profile', title: 'Главная и контакты', path: 'data/profile.json', fields: [
+    BI('first_name', 'Имя'), BI('last_name', 'Фамилия'),
+    BI('eyebrow', 'Строка над именем'), BI('lead', 'Фраза о себе', 'text'),
+    IMG('badge_photo', 'Фото на бейдже', 'Вертикальное, лучше на светлом фоне'),
+    BI('badge_top', 'Бейдж: надпись сверху'), BI('badge_label', 'Бейдж: красная плашка'), BI('badge_role', 'Бейдж: компетенция'),
+    LIST('badge_rows', 'Бейдж: строки', [BI('label', 'Слева'), BI('value', 'Справа')], i => `${i.label?.ru || ''} · ${i.value?.ru || ''}`),
+    S('email', 'Почта'), BI('city', 'Город'), BI('contacts_lead', 'Текст на странице контактов', 'text'),
+    FILE('resume', 'Резюме (PDF)'),
+    LIST('socials', 'Соцсети и ссылки', [S('name', 'Название'), S('name_en', 'Название на английском'), S('url', 'Ссылка', 'url', 'Полная ссылка, например https://t.me/timofeygorev')], i => i.name || 'Новая ссылка'),
+  ]},
+  { id: 'work', title: 'Работа', path: 'data/work.json', fields: [
+    BI('eyebrow', 'Строка над заголовком'), BI('lead', 'Вступление', 'text'),
+    BI('now_label', 'Сейчас: подпись'), BI('now_title', 'Сейчас: должность'), BI('now_text', 'Сейчас: описание', 'text'),
+    LIST('now_tags', 'Сейчас: дисциплины', RUEN, i => i.ru || 'Новая дисциплина'),
+    LIST('experience', 'Опыт', TL, i => `${i.when || ''} ${i.title?.ru || ''}`.trim() || 'Новый пункт', 'Сверху самое новое'),
+    LIST('education', 'Образование', TL, i => `${i.when || ''} ${i.title?.ru || ''}`.trim() || 'Новый пункт'),
+    LIST('skills', 'Навыки', [BI('group', 'Группа'), S('items', 'Навыки через запятую', 'text')], i => i.group?.ru || 'Новая группа'),
+  ]},
+  { id: 'print', title: '3D-мастерская', path: 'data/print.json', fields: [
+    BI('eyebrow', 'Строка над заголовком'), BI('lead', 'Вступление', 'text'),
+    S('order_url', 'Ссылка для заказа', 'url'), BI('order_label', 'Текст кнопки заказа'),
+    IMG('photo', 'Большое фото вверху', 'Горизонтальное'),
+    LIST('cards', 'Карточки (принтер, программы)', [BI('label', 'Подпись'), BI('title', 'Заголовок'), BI('text', 'Текст', 'text')], i => i.title?.ru || 'Новая карточка'),
+    LIST('works', 'Работы', [IMG('image', 'Фото работы', 'Лучше горизонтальное, 4:3'), BI('title', 'Название'), BI('text', 'Описание', 'text')], i => i.title?.ru || 'Новая работа', 'Порядок здесь = порядок на сайте'),
+  ]},
+  { id: 'about', title: 'Обо мне', path: 'data/about.json', fields: [
+    BI('eyebrow', 'Строка над заголовком'), BI('lead', 'Вступление', 'text'),
+    IMG('portrait', 'Портрет', 'Вертикальное 4:5'),
+    BI('gold_label', 'Красный блок: подпись'), BI('gold_title', 'Красный блок: заголовок'), BI('gold_text', 'Красный блок: текст', 'text'),
+    S('quote', 'Цитата из СМИ', 'text'), S('quote_source', 'Источник цитаты'), S('quote_url', 'Ссылка на цитату', 'url'),
+    LIST('cards', 'Карточки', [BI('title', 'Заголовок'), BI('text', 'Текст', 'text')], i => i.title?.ru || 'Новая карточка'),
+    LIST('awards', 'Награды', RUEN, i => i.ru || 'Новая награда'),
+    LIST('projects', 'Свои проекты', [BI('title', 'Название'), BI('text', 'Описание', 'text')], i => i.title?.ru || 'Новый проект'),
+    BI('sport_label', 'Спорт: подпись'), BI('sport_text', 'Спорт: текст', 'text'),
+  ]},
+  { id: 'news', title: 'Новости обо мне', path: 'data/news.json', rootList: true,
+    sum: i => `${i.date || ''} ${i.source || ''}`.trim() || 'Новая статья',
+    fields: [S('source', 'Издание'), S('date', 'Дата', 'date'), S('title', 'Заголовок статьи', 'text'), S('url', 'Ссылка', 'url'), BI('note', 'Короткая подпись')] },
+];
+
+/* ---------- GitHub API ---------- */
+const store = { get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }, set(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }, del(k) { try { localStorage.removeItem(k); } catch (e) {} } };
+let CFG = { token: store.get('adm-token') || '', owner: store.get('adm-owner') || 'ego1st192', repo: store.get('adm-repo') || 'timofeygorev', branch: 'main' };
+const API = 'https://api.github.com';
+const enc = s => { const b = new TextEncoder().encode(s); let bin = ''; for (let i = 0; i < b.length; i += 0x8000) bin += String.fromCharCode.apply(null, b.subarray(i, i + 0x8000)); return btoa(bin); };
+const dec = b64 => new TextDecoder().decode(Uint8Array.from(atob(b64.replace(/\s/g, '')), c => c.charCodeAt(0)));
+const encPath = p => p.split('/').map(encodeURIComponent).join('/');
+
+async function gh(method, path, body) {
+  const r = await fetch(`${API}${path}`, {
+    method,
+    headers: { 'Authorization': `Bearer ${CFG.token}`, 'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', ...(body ? { 'Content-Type': 'application/json' } : {}) },
+    body: body ? JSON.stringify(body) : undefined,
+    cache: 'no-store'
+  });
+  let data = null; try { data = await r.json(); } catch (e) {}
+  if (!r.ok) { const err = new Error((data && data.message) || `HTTP ${r.status}`); err.status = r.status; throw err; }
+  return data;
+}
+const contentsUrl = p => `/repos/${encodeURIComponent(CFG.owner)}/${encodeURIComponent(CFG.repo)}/contents/${encPath(p)}`;
+async function getFile(p) { const d = await gh('GET', `${contentsUrl(p)}?ref=${encodeURIComponent(CFG.branch)}`); return { text: dec(d.content || ''), sha: d.sha }; }
+async function putFile(p, b64, sha, message) { const d = await gh('PUT', contentsUrl(p), { message, content: b64, branch: CFG.branch, ...(sha ? { sha } : {}) }); return d.content.sha; }
+
+function humanError(e) {
+  if (e.status === 401) return 'Токен не подходит или истёк. Выйди и войди с новым токеном.';
+  if (e.status === 403) return 'У токена нет прав на запись. При создании токена в Permissions → Contents нужно выбрать «Read and write».';
+  if (e.status === 404) return 'Репозиторий или файл не найден. Проверь логин и название репозитория, и что токен выдан именно на этот репозиторий.';
+  if (e.status === 409) return 'Файл успел измениться на GitHub. Нажми «Отменить правки», чтобы загрузить свежую версию, и внеси изменения снова.';
+  if (e.status === 422) return 'GitHub не принял файл. Попробуй ещё раз или выбери файл поменьше.';
+  if (e instanceof TypeError) return 'Нет связи с GitHub. Проверь интернет и попробуй ещё раз.';
+  return `Ошибка: ${e.message}`;
+}
+
+/* ---------- Состояние ---------- */
+const STATE = {};        // id -> { data, sha, dirty }
+const previews = {};     // путь картинки -> blob: URL для только что загруженных
+let current = 'profile';
+const $ = id => document.getElementById(id);
+const el = (tag, attrs = {}, ...kids) => { const n = document.createElement(tag); for (const [k, v] of Object.entries(attrs)) { if (k === 'class') n.className = v; else if (k === 'text') n.textContent = v; else if (k.startsWith('on')) n.addEventListener(k.slice(2), v); else n.setAttribute(k, v); } kids.flat().forEach(c => c != null && n.append(c)); return n; };
+let uid = 0; const nid = () => `f${++uid}`;
+
+function setMsg(text, kind = '') { const m = $('msg'); m.textContent = text; m.className = 'msg' + (kind ? ' ' + kind : ''); }
+function markDirty() { STATE[current].dirty = true; renderTabs(); setMsg('Есть несохранённые изменения'); }
+
+function emptyOf(fields) { const o = {}; fields.forEach(f => { o[f.k] = f.t === 'bi' ? { ru: '', en: '' } : f.t === 'list' ? [] : ''; }); return o; }
+
+/* ---------- Поля формы ---------- */
+function inputFor(type, value, onInput, id) {
+  const multiline = type === 'text';
+  const n = multiline ? el('textarea', { id }) : el('input', { id, type: type === 'url' ? 'url' : type === 'date' ? 'date' : 'text' });
+  n.value = value ?? '';
+  n.addEventListener('input', () => { onInput(n.value); markDirty(); });
+  return n;
+}
+
+function fieldNode(f, obj, onChangeSummary) {
+  const wrap = el('div', { class: 'field' });
+  const id = nid();
+  if (f.t === 'bi') {
+    if (!obj[f.k] || typeof obj[f.k] !== 'object') obj[f.k] = { ru: typeof obj[f.k] === 'string' ? obj[f.k] : '', en: '' };
+    const v = obj[f.k];
+    wrap.append(el('span', { class: 'lbl', text: f.l }));
+    const pair = el('div', { class: 'pair' });
+    ['ru', 'en'].forEach(lang => {
+      const iid = nid();
+      pair.append(el('div', {}, el('label', { class: 'tag', for: iid, text: lang === 'ru' ? 'РУССКИЙ' : 'ENGLISH' }), inputFor(f.sub, v[lang], val => { v[lang] = val; onChangeSummary && onChangeSummary(); }, iid)));
+    });
+    wrap.append(pair);
+  } else if (f.t === 'image' || f.t === 'file') {
+    wrap.append(el('span', { class: 'lbl', text: f.l }));
+    wrap.append(mediaNode(f, obj));
+  } else if (f.t === 'list') {
+    wrap.append(el('span', { class: 'lbl', text: f.l }));
+    if (!Array.isArray(obj[f.k])) obj[f.k] = [];
+    wrap.append(listNode(obj[f.k], f.fields, f.sum));
+  } else {
+    wrap.append(el('label', { for: id, text: f.l }));
+    wrap.append(inputFor(f.t, obj[f.k], val => { obj[f.k] = val; onChangeSummary && onChangeSummary(); }, id));
+  }
+  if (f.hint) wrap.append(el('span', { class: 'hint', text: f.hint }));
+  return wrap;
+}
+
+function mediaNode(f, obj) {
+  const box = el('div', { class: 'media' });
+  const isImg = f.t === 'image';
+  const fileInput = el('input', { type: 'file', accept: isImg ? 'image/*' : 'application/pdf', hidden: '' });
+  const status = el('span', { class: 'hint' });
+  function draw() {
+    box.innerHTML = '';
+    const val = obj[f.k] || '';
+    if (isImg) {
+      if (val) { const img = el('img', { alt: '' }); img.src = previews[val] || val.replace(/^\/+/, ''); box.append(img); }
+      else box.append(el('div', { class: 'ph', text: 'нет фото' }));
+    }
+    const col = el('div', { style: 'display:flex;flex-direction:column;gap:8px;min-width:0' });
+    col.append(el('span', { class: 'path', text: val || (isImg ? 'Фото не выбрано' : 'Файл не выбран') }));
+    const btns = el('div', { style: 'display:flex;gap:8px;flex-wrap:wrap' });
+    btns.append(el('button', { class: 'btn small', type: 'button', text: isImg ? (val ? 'Заменить фото' : 'Загрузить фото') : (val ? 'Заменить PDF' : 'Загрузить PDF'), onclick: () => fileInput.click() }));
+    if (val) btns.append(el('button', { class: 'btn small', type: 'button', text: 'Убрать', onclick: () => { obj[f.k] = ''; markDirty(); draw(); } }));
+    col.append(btns, status, fileInput);
+    box.append(col);
+  }
+  fileInput.addEventListener('change', async () => {
+    const file = fileInput.files && fileInput.files[0];
+    fileInput.value = '';
+    if (!file) return;
+    try {
+      status.textContent = 'Загружаю…';
+      const { b64, name, blob } = isImg ? await prepImage(file) : await prepFile(file);
+      if (blob.size > 20 * 1024 * 1024) throw Object.assign(new Error('big'), { status: 422 });
+      const path = `media/${name}`;
+      await putFile(path, b64, null, `Загружен файл ${name}`);
+      const val = '/' + path;
+      if (isImg) previews[val] = URL.createObjectURL(blob);
+      obj[f.k] = val; markDirty(); draw();
+      setMsg('Файл загружен. Не забудь нажать «Сохранить раздел».', 'ok');
+    } catch (e) { status.textContent = humanError(e); }
+  });
+  draw();
+  return box;
+}
+
+function slug(name) {
+  const base = name.replace(/\.[^.]+$/, '').toLowerCase()
+    .replace(/[а-яё]/g, c => ({ а:'a',б:'b',в:'v',г:'g',д:'d',е:'e',ё:'e',ж:'zh',з:'z',и:'i',й:'y',к:'k',л:'l',м:'m',н:'n',о:'o',п:'p',р:'r',с:'s',т:'t',у:'u',ф:'f',х:'h',ц:'c',ч:'ch',ш:'sh',щ:'sch',ъ:'',ы:'y',ь:'',э:'e',ю:'yu',я:'ya' }[c] || ''))
+    .replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 40) || 'file';
+  return `${base}-${Date.now().toString(36)}`;
+}
+const blobToB64 = blob => new Promise((res, rej) => { const r = new FileReader(); r.onload = () => res(String(r.result).split(',')[1]); r.onerror = rej; r.readAsDataURL(blob); });
+async function prepImage(file) {
+  let blob = file;
+  try {
+    const bmp = await createImageBitmap(file);
+    const max = 1800, k = Math.min(1, max / Math.max(bmp.width, bmp.height));
+    const c = document.createElement('canvas'); c.width = Math.round(bmp.width * k); c.height = Math.round(bmp.height * k);
+    const ctx = c.getContext('2d'); ctx.fillStyle = '#FFFFFF'; ctx.fillRect(0, 0, c.width, c.height); ctx.drawImage(bmp, 0, 0, c.width, c.height);
+    blob = await new Promise(r => c.toBlob(r, 'image/jpeg', 0.85));
+  } catch (e) { blob = file; }
+  const ext = blob.type === 'image/jpeg' ? 'jpg' : (file.name.split('.').pop() || 'jpg').toLowerCase();
+  return { blob, b64: await blobToB64(blob), name: `${slug(file.name)}.${ext}` };
+}
+async function prepFile(file) { return { blob: file, b64: await blobToB64(file), name: `${slug(file.name)}.pdf` }; }
+
+function listNode(arr, fields, sum) {
+  const box = el('div', { class: 'group' });
+  function draw(openIndex) {
+    box.innerHTML = '';
+    arr.forEach((item, i) => {
+      const t = el('span', { class: 't', text: (sum ? sum(item) : '') || `Пункт ${i + 1}` });
+      const upd = () => { t.textContent = (sum ? sum(item) : '') || `Пункт ${i + 1}`; };
+      const ctrl = (label, title, fn, cls = '') => el('button', { class: 'ibtn ' + cls, type: 'button', 'aria-label': title, title, text: label, onclick: ev => { ev.preventDefault(); fn(); } });
+      const summary = el('summary', {}, el('span', { class: 'arrow', 'aria-hidden': 'true', text: '›' }), t,
+        ctrl('↑', 'Выше', () => { if (i > 0) { [arr[i - 1], arr[i]] = [arr[i], arr[i - 1]]; markDirty(); draw(); } }),
+        ctrl('↓', 'Ниже', () => { if (i < arr.length - 1) { [arr[i + 1], arr[i]] = [arr[i], arr[i + 1]]; markDirty(); draw(); } }),
+        ctrl('✕', 'Удалить', () => { if (box.dataset.confirm === String(i)) { arr.splice(i, 1); markDirty(); box.dataset.confirm = ''; draw(); } else { box.dataset.confirm = String(i); t.textContent = 'Нажми ✕ ещё раз, чтобы удалить'; } }, 'del'));
+      const d = el('details', { class: 'item' }, summary, el('div', { class: 'body' }, fields.map(f => fieldNode(f, item, upd))));
+      if (i === openIndex) d.open = true;
+      box.append(d);
+    });
+    box.append(el('button', { class: 'btn small', type: 'button', text: '+ Добавить', onclick: () => { arr.push(emptyOf(fields)); markDirty(); draw(arr.length - 1); } }));
+  }
+  draw(-1);
+  return box;
+}
+
+/* ---------- Разделы ---------- */
+function renderTabs() {
+  const t = $('tabs'); t.innerHTML = '';
+  SECTIONS.forEach(s => {
+    const b = el('button', { type: 'button', role: 'tab', 'aria-selected': String(s.id === current), onclick: () => openSection(s.id) }, s.title);
+    if (STATE[s.id]?.dirty) b.append(el('span', { class: 'dot', title: 'Есть несохранённые изменения' }));
+    t.append(b);
+  });
+}
+
+function renderForm() {
+  const s = SECTIONS.find(x => x.id === current), st = STATE[current];
+  const form = $('form'); form.innerHTML = '';
+  form.append(el('h2', { style: 'font-size:24px;font-weight:800', text: s.title }));
+  if (s.rootList) form.append(el('p', { class: 'hint', text: 'На сайте статьи сортируются по дате сами, новые сверху.' }), listNode(st.data, s.fields, s.sum));
+  else s.fields.forEach(f => form.append(fieldNode(f, st.data)));
+  $('loading').hidden = true; form.hidden = false;
+}
+
+async function loadSection(id) {
+  const s = SECTIONS.find(x => x.id === id);
+  const { text, sha } = await getFile(s.path);
+  let data; try { data = JSON.parse(text); } catch (e) { data = s.rootList ? [] : {}; }
+  STATE[id] = { data, sha, dirty: false };
+}
+
+async function openSection(id) {
+  current = id; renderTabs();
+  if (!STATE[id]) {
+    $('form').hidden = true; $('loading').hidden = false; $('loading').textContent = 'Загружаю данные…';
+    try { await loadSection(id); } catch (e) { $('loading').textContent = humanError(e); return; }
+  }
+  renderForm();
+  setMsg(STATE[id].dirty ? 'Есть несохранённые изменения' : '');
+}
+
+async function save() {
+  const s = SECTIONS.find(x => x.id === current), st = STATE[current];
+  if (!st) return;
+  const btn = $('btn-save'); btn.disabled = true; setMsg('Сохраняю…');
+  try {
+    const json = JSON.stringify(st.data, null, 2) + '\n';
+    st.sha = await putFile(s.path, enc(json), st.sha, `Админка: ${s.title}`);
+    st.dirty = false; renderTabs();
+    setMsg('Сохранено. Сайт обновится через 1–2 минуты.', 'ok');
+  } catch (e) { setMsg(humanError(e), 'err'); }
+  btn.disabled = false;
+}
+
+async function reloadSection() {
+  const st = STATE[current];
+  if (st && st.dirty && $('btn-reload').dataset.confirm !== '1') { $('btn-reload').dataset.confirm = '1'; setMsg('Нажми «Отменить правки» ещё раз: несохранённые изменения пропадут.', 'err'); return; }
+  $('btn-reload').dataset.confirm = '';
+  delete STATE[current];
+  await openSection(current);
+  setMsg('Загружена свежая версия с GitHub.', 'ok');
+}
+
+/* ---------- Вход ---------- */
+async function login() {
+  const err = $('login-err'); err.hidden = true;
+  CFG.token = $('in-token').value.trim() || CFG.token;
+  CFG.owner = $('in-owner').value.trim(); CFG.repo = $('in-repo').value.trim();
+  if (!CFG.token) { err.textContent = 'Вставь токен.'; err.hidden = false; return; }
+  $('btn-login').disabled = true;
+  try {
+    const r = await gh('GET', `/repos/${encodeURIComponent(CFG.owner)}/${encodeURIComponent(CFG.repo)}`);
+    if (r.default_branch) CFG.branch = r.default_branch;
+    if (r.permissions && r.permissions.push === false) throw Object.assign(new Error('no push'), { status: 403 });
+    store.set('adm-token', CFG.token); store.set('adm-owner', CFG.owner); store.set('adm-repo', CFG.repo);
+    startEditor();
+  } catch (e) { err.textContent = humanError(e); err.hidden = false; }
+  $('btn-login').disabled = false;
+}
+
+function startEditor() {
+  $('login').hidden = true; $('editor').hidden = false; $('logout').hidden = false;
+  $('repo-label').textContent = `${CFG.owner}/${CFG.repo}`;
+  openSection(current);
+}
+
+function logout() {
+  store.del('adm-token'); CFG.token = '';
+  Object.keys(STATE).forEach(k => delete STATE[k]);
+  $('editor').hidden = true; $('logout').hidden = true; $('login').hidden = false; $('in-token').value = ''; $('repo-label').textContent = '';
+}
+
+$('btn-login').addEventListener('click', login);
+$('in-token').addEventListener('keydown', e => { if (e.key === 'Enter') login(); });
+$('btn-save').addEventListener('click', save);
+$('btn-reload').addEventListener('click', reloadSection);
+$('logout').addEventListener('click', logout);
+window.addEventListener('beforeunload', e => { if (Object.values(STATE).some(s => s.dirty)) { e.preventDefault(); e.returnValue = ''; } });
+
+$('in-owner').value = CFG.owner; $('in-repo').value = CFG.repo;
+if (CFG.token) startEditor(); else $('login').hidden = false;
+</script>
+</body>
+</html>
