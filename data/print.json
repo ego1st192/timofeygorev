@@ -1,0 +1,22 @@
+{
+  "eyebrow": { "ru": "Моделирование · печать · обучение", "en": "Modeling · printing · teaching" },
+  "lead": {
+    "ru": "Придумываю и моделирую детали, печатаю их дома в Салехарде. Корпуса, крепления, органайзеры, таблички, кейкапы.",
+    "en": "I design parts and print them at home in Salekhard: enclosures, mounts, organizers, signs, keycaps."
+  },
+  "order_url": "https://t.me/yamal3d",
+  "order_label": { "ru": "Заказать печать: @yamal3d", "en": "Order printing: @yamal3d" },
+  "photo": "/media/workshop.jpg",
+  "cards": [
+    { "label": { "ru": "Оборудование", "en": "Hardware" }, "title": { "ru": "Bambu Lab A1", "en": "Bambu Lab A1" }, "text": { "ru": "Печатаю в основном PETG: прочный и не боится холода.", "en": "Mostly PETG: strong and fine in the cold." } },
+    { "label": { "ru": "Программы", "en": "Software" }, "title": { "ru": "Blender · CadQuery", "en": "Blender · CadQuery" }, "text": { "ru": "Blender для сложных форм, CadQuery для точных деталей по размерам. Слайсер Bambu Studio.", "en": "Blender for complex shapes, CadQuery for precise parts. Bambu Studio for slicing." } }
+  ],
+  "works": [
+    { "image": "", "title": { "ru": "Кейкапы с логотипом ЯМК", "en": "College logo keycaps" }, "text": { "ru": "Клавиша Esc в цвете колледжа.", "en": "An Esc key in the college colors." } },
+    { "image": "", "title": { "ru": "Корпус с резьбой", "en": "Threaded enclosure" }, "text": { "ru": "Крышка закручивается без клея и винтов.", "en": "The lid screws on, no glue or bolts." } },
+    { "image": "", "title": { "ru": "Таблички медиацентра", "en": "Media center signs" }, "text": { "ru": "Дверные таблички для колледжа, модели в CadQuery.", "en": "Door signs for the college, modeled in CadQuery." } },
+    { "image": "", "title": { "ru": "Кейс для оптики", "en": "Optics case" }, "text": { "ru": "Защитный футляр под оптические модули.", "en": "A protective case for optical modules." } },
+    { "image": "", "title": { "ru": "Вешалка для патч-кордов", "en": "Patch cord hanger" }, "text": { "ru": "Порядок в серверной вместо клубка проводов.", "en": "A tidy server room instead of a cable tangle." } },
+    { "image": "", "title": { "ru": "Органайзер", "en": "Organizer" }, "text": { "ru": "Под инструмент и мелкие детали.", "en": "For tools and small parts." } }
+  ]
+}

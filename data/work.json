@@ -1,0 +1,36 @@
+{
+  "eyebrow": { "ru": "Колледж · сети · чемпионаты", "en": "College · networks · championships" },
+  "lead": {
+    "ru": "Преподаю в Ямальском многопрофильном колледже и готовлю студентов к чемпионатам. До этого два года отвечал за сети и технику колледжа.",
+    "en": "I teach at Yamal Multidisciplinary College and train students for skills championships. Before that I spent two years running the college network and hardware."
+  },
+  "now_label": { "ru": "Сейчас · с сентября 2026", "en": "Now · since September 2026" },
+  "now_title": { "ru": "Преподаватель ЯМК, отделение технического профиля", "en": "Teacher, Yamal Multidisciplinary College, technical department" },
+  "now_text": {
+    "ru": "Веду шесть групп и курирую одну. Главное в моих парах: практика. Каждое занятие студенты делают реальную вещь.",
+    "en": "I teach six groups and curate one. My classes are all practice: every lesson students make something real."
+  },
+  "now_tags": [
+    { "ru": "Быстрое прототипирование", "en": "Rapid prototyping" },
+    { "ru": "Программирование микроконтроллеров", "en": "Microcontroller programming" },
+    { "ru": "Безопасность компьютерных сетей", "en": "Network security" },
+    { "ru": "Администрирование компьютерных систем", "en": "Computer systems administration" },
+    { "ru": "ПО компьютерных сетей", "en": "Network software" }
+  ],
+  "experience": [
+    { "when": "2026 →", "title": { "ru": "Преподаватель, ЯМК.", "en": "Teacher, YaMK." }, "text": { "ru": "Прототипирование, микроконтроллеры, сети.", "en": "Prototyping, microcontrollers, networks." } },
+    { "when": "2026", "title": { "ru": "Эксперт-наставник.", "en": "Expert mentor." }, "text": { "ru": "Вывел студентку в финал «Профессионалов» в Калуге, работаю над заданием компетенции на 2027 год.", "en": "Took a student to the national «Professionals» final in Kaluga; now co-writing the 2027 competition task." } },
+    { "when": "2026", "title": { "ru": "Организатор стажировки.", "en": "Internship organizer." }, "text": { "ru": "Принял в ЯМК участников чемпионата из Хабаровска.", "en": "Hosted championship participants from Khabarovsk at the college." } },
+    { "when": "2024–2026", "title": { "ru": "Лаборант отдела информатизации, ЯМК.", "en": "Lab assistant, IT department, YaMK." }, "text": { "ru": "Рабочие места, локальная сеть, ремонт ИБП, межсетевой экран ИКС. Сделал методички к демоэкзамену 09.02.06.", "en": "Workstations, local network, UPS repair, IKS firewall. Wrote study guides for the 09.02.06 demonstration exam." } }
+  ],
+  "education": [
+    { "when": "2026–2030", "title": { "ru": "ТУСУР, факультет дистанционного обучения.", "en": "TUSUR, distance learning faculty." }, "text": { "ru": "Прикладная информатика в экономике, 09.03.03, заочно.", "en": "Applied informatics in economics, 09.03.03, part-time." } },
+    { "when": "2022–2026", "title": { "ru": "Ямальский многопрофильный колледж.", "en": "Yamal Multidisciplinary College." }, "text": { "ru": "Сетевое и системное администрирование. Диплом с отличием, демоэкзамен на 100 баллов, ВКР «Межсетевой экран ИКС: интернет-шлюз предприятия» на «отлично».", "en": "Network and systems administration. Diploma with honours, 100 points at the demonstration exam, thesis on the IKS firewall as a company internet gateway graded excellent." } }
+  ],
+  "skills": [
+    { "group": { "ru": "Сети и системы", "en": "Networks & systems" }, "items": "EcoRouter, VLAN, OpenVPN, nftables, ALT Linux, Samba AD DC, nginx, ИКС (UTM)" },
+    { "group": { "ru": "Виртуализация и автоматизация", "en": "Virtualization & automation" }, "items": "VMware, Docker, Ansible" },
+    { "group": { "ru": "Электроника", "en": "Electronics" }, "items": "Arduino / C++, ЭМГ-датчики, Ремонт ИБП и плат" },
+    { "group": { "ru": "3D", "en": "3D" }, "items": "Blender, CadQuery, Bambu Studio" }
+  ]
+}

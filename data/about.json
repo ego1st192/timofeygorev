@@ -1,0 +1,36 @@
+{
+  "eyebrow": { "ru": "Кто я", "en": "Who I am" },
+  "lead": {
+    "ru": "Закончил ЯМК с красным дипломом и остался там преподавать. Люблю задачи, где сходятся железо, код и 3D-печать.",
+    "en": "Graduated from the college with honours and stayed to teach. I like problems where hardware, code and 3D printing meet."
+  },
+  "portrait": "/media/portrait.jpg",
+  "gold_label": { "ru": "Главное достижение", "en": "Top achievement" },
+  "gold_title": { "ru": "2 золота", "en": "2× gold" },
+  "gold_text": {
+    "ru": "Всероссийский финал чемпионата «Профессионалы» 2025, компетенция «Проектирование и изготовление протезов и ортезов». Личный и командный зачёт. Полный цикл бионического протеза кисти: 3D-скан, гильза, печать, сборка, электроника и прошивка.",
+    "en": "«Professionals» national championship final 2025, «Design and manufacture of prostheses and orthoses». Individual and team events. Full cycle of a bionic hand prosthesis: 3D scan, socket, printing, assembly, electronics and firmware."
+  },
+  "quote": "«Абсолютным победителем в компетенции «Проектирование и изготовление протезов и ортезов» стал Тимофей Горев»",
+  "quote_source": "Импульс Севера, 03.09.2025",
+  "quote_url": "https://tv-impulse.ru/news/education/yamalskie-studenty-zavoevali-zoloto-i-serebro-chempionata-professionaly/",
+  "cards": [
+    { "title": { "ru": "Наставник", "en": "Mentor" }, "text": { "ru": "Эксперт-наставник на финале «Профессионалов» 2026 в Калуге: моя участница заняла 2 место в командном зачёте. Сейчас готовлю участника к финалу «Абилимпикс» 2026 и переписываю конкурсное задание компетенции на 2027 год.", "en": "Expert mentor at the 2026 «Professionals» final in Kaluga: my student took 2nd place in the team event. Now preparing a participant for the 2026 Abilympics final and co-writing the 2027 competition task." } },
+    { "title": { "ru": "Диплом с отличием", "en": "Diploma with honours" }, "text": { "ru": "Сетевое и системное администрирование, 09.02.06. Демоэкзамен на 100 баллов.", "en": "Network and systems administration, 09.02.06. 100 points at the demonstration exam." } }
+  ],
+  "awards": [
+    { "ru": "2 золотые медали чемпионата «Профессионалы», 2025", "en": "2 gold medals, «Professionals» championship, 2025" },
+    { "ru": "Медаль «За помощь фронту» за волонтёрскую 3D-печать, 2025", "en": "Medal «For helping the front» for volunteer 3D printing, 2025" },
+    { "ru": "Диплом с отличием, 2026", "en": "Diploma with honours, 2026" },
+    { "ru": "Участник конкурса «Мастер года», 2026", "en": "Participant of the «Master of the Year» contest, 2026" }
+  ],
+  "projects": [
+    { "title": { "ru": "Бионическая рука", "en": "Bionic hand" }, "text": { "ru": "Управление протезом кисти на Arduino: ЭМГ-датчики снимают сигнал мышц, моторы двигают пальцы.", "en": "Arduino control for a prosthetic hand: EMG sensors read muscle signals, motors move the fingers." } },
+    { "title": { "ru": "E.G.O.", "en": "E.G.O." }, "text": { "ru": "Мой личный ИИ-помощник. Работает вместе с домашним файловым хранилищем.", "en": "My personal AI assistant. It runs together with my home file storage." } }
+  ],
+  "sport_label": { "ru": "Лыжи 2019–2021", "en": "Skiing 2019–2021" },
+  "sport_text": {
+    "ru": "Бывший лыжник: победитель первенства ЯНАО и член сборной округа. Отсюда привычка доводить дело до конца.",
+    "en": "Former cross-country skier: Yamal youth champion and member of the regional team. That’s where I learned to finish what I start."
+  }
+}

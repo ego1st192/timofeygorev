@@ -1,0 +1,504 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Тимофей Горев: эксперт по протезированию, преподаватель и системный администратор из Салехарда.">
+<meta property="og:title" content="Тимофей Горев">
+<meta property="og:image" content="media/portrait.jpg">
+<title>Тимофей Горев</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;700;800&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+body{margin:0}
+/* Layout: "accreditation" concept. Name left, expert badge on a lanyard of the YaNAO flag ornament right; white rounded cards; flag band closes every page. All content comes from data/*.json, edited in Pages CMS */
+:root{
+  --bg:#E8EEF3;
+  --surface:#FFFFFF;
+  --ink:#0E1A26;
+  --muted:#4A5B6B;
+  --line:#DDE6EE;
+  --link:#0B6FA8;
+  --btn:#0E1A26;
+  --on-btn:#FFFFFF;
+  --ph:#DDE6EE;
+  --shadow:rgba(14,26,38,.18);
+  --flag:#1A9BDB;
+  --red:#D3261F;
+  --foot:#0E1A26;
+  --on-foot:#E8EEF3;
+  --f-body:'Onest',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --f-mono:'IBM Plex Mono',ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0B1520;--surface:#13212E;--ink:#EAF2F8;--muted:#A8B9C8;--line:#24384A;--link:#6CC6F2;
+  --btn:#EAF2F8;--on-btn:#0B1520;--ph:#1C2D3C;--shadow:rgba(0,0,0,.5);color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0B1520;--surface:#13212E;--ink:#EAF2F8;--muted:#A8B9C8;--line:#24384A;--link:#6CC6F2;
+  --btn:#EAF2F8;--on-btn:#0B1520;--ph:#1C2D3C;--shadow:rgba(0,0,0,.5);color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:18px;line-height:1.5;overflow-x:hidden}
+#app{overflow-x:clip}
+a{color:inherit}
+a:hover{color:var(--link)}
+:focus-visible{outline:3px solid var(--flag);outline-offset:3px;border-radius:6px}
+h1,h2,h3{text-wrap:balance;margin:0}
+p{margin:0}
+.wrap{max-width:1280px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.mono{font-family:var(--f-mono);font-weight:500;font-size:14px;letter-spacing:.06em;text-transform:uppercase}
+.eyebrow{color:var(--link)}
+
+.top{padding-block:22px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 24px}
+.logo{font-weight:800;font-size:18px;text-decoration:none}
+.menu{display:flex;flex-wrap:wrap;align-items:center;gap:0 26px;font-weight:500;font-size:16px}
+.menu a{text-decoration:none;padding-block:10px;border-bottom:2px solid transparent}
+.menu a[aria-current="page"]{border-bottom-color:var(--flag)}
+.lang{display:inline-flex;gap:2px;font-family:var(--f-mono);font-size:14px}
+.lang button{min-width:44px;min-height:40px;border:0;border-radius:10px;background:transparent;color:var(--muted);font:inherit;cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--surface);color:var(--ink)}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:56px;padding:0 28px;border-radius:14px;text-decoration:none;font-weight:700;font-size:17px;border:2px solid var(--btn);cursor:pointer;font-family:inherit;transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn.solid{background:var(--btn);color:var(--on-btn)}
+.btn.solid:hover{color:var(--on-btn)}
+.btn.line{background:transparent;color:var(--ink)}
+.btn.red{background:var(--red);border-color:var(--red);color:#FFFFFF}
+.btn.red:hover{color:#FFFFFF}
+.btn.ghost{background:transparent;color:var(--muted);border:2px dashed var(--line);cursor:default}
+.btn.ghost:hover{transform:none}
+
+.hero{padding-block:24px 72px;display:flex;flex-wrap:wrap;align-items:flex-start;gap:48px}
+.hero-text{flex:999 1 560px;min-width:0;padding-top:72px;display:flex;flex-direction:column;gap:28px}
+.hero h1{font-weight:800;font-size:clamp(60px,9vw,128px);line-height:.95;letter-spacing:-.03em}
+.lead{max-width:580px;font-size:clamp(19px,1.8vw,22px);line-height:1.45;color:var(--muted)}
+.actions{display:flex;flex-wrap:wrap;gap:12px}
+.socials{display:flex;flex-wrap:wrap;gap:4px 24px;font-family:var(--f-mono);font-size:15px}
+.socials a{padding-block:10px;text-decoration:none}
+
+.hanger-col{flex:1 1 380px;display:flex;justify-content:center;min-width:0;padding-inline:12px}
+.hanger{width:380px;max-width:100%;display:flex;flex-direction:column;align-items:center;transform-origin:50% 0;transform:rotate(-2deg);animation:swing 1.8s cubic-bezier(.3,.7,.4,1) both;transition:transform .5s}
+.hanger:hover{transform:rotate(0deg)}
+@keyframes swing{0%{transform:rotate(7deg)}30%{transform:rotate(-5deg)}55%{transform:rotate(2deg)}78%{transform:rotate(-3deg)}100%{transform:rotate(-2deg)}}
+@media (prefers-reduced-motion: reduce){.hanger{animation:none;transition:none}}
+.strap{width:56px;height:150px;background:var(--flag)}
+.strap svg{display:block;width:56px;height:150px}
+.clip{width:92px;height:22px;margin-top:-4px;background:#9AA8B4;border-radius:6px}
+.badge{width:100%;margin-top:-6px;background:var(--surface);border-radius:22px;box-shadow:0 24px 60px var(--shadow);overflow:hidden;display:flex;flex-direction:column}
+.badge-top{background:var(--flag);color:#0E1A26;padding:18px 24px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.badge-top .mono{font-size:13px}
+.expert{padding:6px 14px;background:var(--red);color:#FFFFFF;border-radius:999px;font-weight:800;font-size:14px;letter-spacing:.06em}
+.badge-id{padding:28px 24px 20px;display:flex;gap:20px;align-items:flex-start}
+.badge-photo{flex:0 0 132px;width:132px;height:168px;border-radius:12px;object-fit:cover;display:block;background:var(--ph);border:1px solid var(--line)}
+.badge-name{display:flex;flex-direction:column;gap:8px;min-width:0}
+.badge-name b{font-weight:800;font-size:26px;line-height:1.1}
+.badge-name span{font-size:15px;color:var(--muted)}
+.badge-rows{padding:0 24px 24px;display:flex;flex-direction:column}
+.kv{display:flex;justify-content:space-between;gap:12px;padding-block:12px;border-top:1px solid var(--line);font-size:15px}
+.kv span:first-child{color:var(--muted)}
+.kv span:last-child{font-weight:700;text-align:right}
+
+.band{background:var(--flag)}
+.band svg{display:block;width:100%}
+
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:16px}
+.navcard{background:var(--surface);border-radius:18px;padding:26px;text-decoration:none;display:flex;flex-direction:column;gap:8px;min-height:150px;transition:transform .15s,box-shadow .15s}
+.navcard:hover{color:var(--ink);transform:translateY(-3px);box-shadow:0 12px 30px var(--shadow)}
+.navcard b{font-weight:800;font-size:24px}
+.navcard span{color:var(--muted);font-size:16px}
+.navcard i{margin-top:auto;font-style:normal;color:var(--link);font-weight:700}
+.card{background:var(--surface);border-radius:20px;padding:30px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.card h3{font-weight:800;font-size:26px;line-height:1.15}
+.card p{color:var(--muted)}
+.card.flag{background:var(--flag);color:#0E1A26}
+.card.flag p{color:#0E1A26}
+.card.flag .chip{border-color:#0E1A26;background:transparent}
+.grid2{display:flex;flex-wrap:wrap;gap:16px}
+.grid2>*{flex:1 1 360px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{padding:7px 14px;border:1.5px solid var(--line);border-radius:10px;background:var(--bg);font-weight:500;font-size:15px}
+
+.page-head{padding-block:48px 40px;display:flex;flex-direction:column;gap:20px}
+.page-head h1{font-weight:800;font-size:clamp(48px,7vw,96px);line-height:.98;letter-spacing:-.03em}
+section.block,div.block{padding-bottom:56px}
+h2.title{font-weight:800;font-size:clamp(28px,3.5vw,40px);margin-bottom:20px}
+
+.timeline{list-style:none;margin:0;padding:0 30px;background:var(--surface);border-radius:20px}
+.timeline li{display:flex;flex-wrap:wrap;gap:4px 32px;padding-block:20px;border-top:1px solid var(--line)}
+.timeline li:first-child{border-top:0}
+.timeline .when{flex:0 0 150px;font-family:var(--f-mono);font-weight:500;font-size:15px;font-variant-numeric:tabular-nums;color:var(--link)}
+.timeline .what{flex:1 1 400px;min-width:0}
+.timeline b{font-weight:700}
+
+.ph{background:var(--ph);color:var(--muted);display:flex;align-items:center;justify-content:center;text-align:center;padding:12px;font-family:var(--f-mono);font-size:12px;max-width:100%}
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,290px),1fr));gap:16px}
+.work{background:var(--surface);border-radius:20px;overflow:hidden;display:flex;flex-direction:column}
+.work .ph,.work img{aspect-ratio:4/3;width:100%;height:auto;object-fit:cover;display:block}
+.work .txt{padding:20px 22px 24px;display:flex;flex-direction:column;gap:6px}
+.work h3{font-weight:800;font-size:20px;line-height:1.2}
+.work p{font-size:16px;color:var(--muted)}
+
+.about-head{display:flex;flex-wrap:wrap;align-items:center;gap:40px}
+.about-head>div:first-child{flex:999 1 520px;min-width:0;display:flex;flex-direction:column;gap:20px}
+.portrait{flex:0 1 340px;width:340px;max-width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;border-radius:22px;display:block;background:var(--ph)}
+.wide-photo{display:block;width:100%;height:auto;aspect-ratio:16/9;max-height:520px;object-fit:cover;border-radius:22px;background:var(--ph)}
+
+.gold{background:var(--red);color:#FFFFFF;border-radius:24px;padding:44px;display:flex;flex-wrap:wrap;align-items:center;gap:32px}
+.gold>div:first-child{flex:999 1 480px;min-width:0;display:flex;flex-direction:column;gap:14px}
+.gold h2{font-weight:800;font-size:clamp(48px,7vw,104px);line-height:.95;letter-spacing:-.02em}
+.gold p{font-size:20px;font-weight:500;max-width:600px}
+.quote{flex:1 1 300px;min-width:0;margin:0;padding:28px;border-radius:18px;background:rgba(255,255,255,.16);display:flex;flex-direction:column;gap:14px}
+.quote p{font-size:22px;font-weight:700;line-height:1.3}
+.quote a{color:#FFFFFF;font-family:var(--f-mono);font-size:14px}
+.quote a:hover{color:#FFFFFF}
+
+.news{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:16px}
+.newsitem{background:var(--surface);border-radius:18px;padding:24px;text-decoration:none;display:flex;flex-direction:column;gap:10px;transition:transform .15s,box-shadow .15s}
+.newsitem:hover{color:var(--ink);transform:translateY(-3px);box-shadow:0 12px 30px var(--shadow)}
+.newsitem .mono{font-size:13px;color:var(--link)}
+.newsitem b{font-weight:700;font-size:18px;line-height:1.3}
+.newsitem .note{color:var(--muted);font-size:15px;margin-top:auto}
+.list{margin:0;padding:0;list-style:none;display:flex;flex-direction:column}
+.list li{padding-block:10px;border-top:1px solid var(--line)}
+.list li:first-child{border-top:0}
+
+.mail{font-weight:800;font-size:clamp(26px,5vw,60px);line-height:1.1;word-break:break-all;user-select:all}
+.status{font-family:var(--f-mono);font-size:14px;min-height:20px;color:var(--link)}
+.pills{display:flex;flex-wrap:wrap;gap:10px}
+.pills a{display:inline-flex;align-items:center;min-height:48px;padding:0 20px;border:2px solid var(--ink);border-radius:12px;text-decoration:none;font-weight:700}
+.notice{margin:24px auto;max-width:720px;padding:20px 24px;border-radius:16px;background:var(--surface);border:2px solid var(--red)}
+
+footer.foot{background:var(--foot);color:var(--on-foot)}
+footer.foot .wrap{padding-block:28px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px}
+footer.foot a{color:var(--on-foot);min-height:44px;display:inline-flex;align-items:center;text-decoration:none}
+footer.foot a:hover{color:var(--flag)}
+
+.view[hidden]{display:none!important}
+.appear{animation:rise .4s ease both}
+@keyframes rise{from{transform:translateY(12px)}to{transform:none}}
+@media (prefers-reduced-motion: reduce){.appear{animation:none}}
+@media (max-width:640px){.hero-text{padding-top:16px}.gold{padding:28px}.timeline{padding:0 20px}.badge-photo{flex-basis:104px;width:104px;height:132px}}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <!-- Орнамент «Оленьи рога» с флага ЯНАО: контур из векторного файла флага (Wikimedia Commons) -->
+    <path id="orn-src" fill="#FFFFFF" fill-rule="evenodd" transform="rotate(-45 787.5 690) translate(70 217.5) scale(35)" d="m0 0h3v-3h1v1h1v2h-1v-1h2v1h1v1h-3v1h1v1h2v-1h-1v2h1v1h1v-3h1v1h1v2h-1v-1h2v1h1v1h-3v1h1v1h2v-1h-1v2h1v1h1v-3h1v1h1v2h-1v-1h2v1h1v1h-3v1h1v1h2v-1h-1v2h1v1h1v-3h1v1h1v2h-1v-1h2v1h1v1h-3v1h1v1h2v-1h-1v2h1v1h1v-3h1v1h1v2h-1v-1h2v1h1v1h-3v1h1v1h2v-1h-1v2h1v1h1v-3h1v1h1v2h-1v-1h2v1h1v1h-3v1h1v1h2v-1h-1v2h1v1h1v-3h1v1h1v2h-1v-1h2v1h1v1h-3v1h1v1h2v-1h-1v2h1v1h1v-3h1v1h1v2h-1v-1h2v1h1v1h-3v3z"/>
+    <g id="orn-tile">
+      <use href="#orn-src"/>
+      <rect x="0" y="858" width="1575" height="21" fill="#1A9BDB"/>
+      <rect x="0" y="879" width="1575" height="21" fill="#D3261F"/>
+    </g>
+    <pattern id="orn56" patternUnits="userSpaceOnUse" width="65.9966" height="56" viewBox="600 690 247.4874 210"><use href="#orn-tile"/></pattern>
+    <pattern id="orn32" patternUnits="userSpaceOnUse" width="37.7124" height="32" viewBox="600 690 247.4874 210"><use href="#orn-tile"/></pattern>
+    <pattern id="orn-strap" patternUnits="userSpaceOnUse" width="65.9966" height="56" viewBox="600 690 247.4874 210" patternTransform="translate(56 0) rotate(90)"><use href="#orn-tile"/></pattern>
+  </defs>
+</svg>
+
+<div id="app">
+
+<header class="wrap top">
+  <a class="logo" href="#home" id="logo">Тимофей Горев</a>
+  <nav class="menu" aria-label="Основное меню">
+    <a href="#work" data-nav="work" data-ui="nav.work">Работа</a>
+    <a href="#print" data-nav="print" data-ui="nav.print">3D-мастерская</a>
+    <a href="#about" data-nav="about" data-ui="nav.about">Обо мне</a>
+    <a href="#contacts" data-nav="contacts" data-ui="nav.contacts">Контакты</a>
+    <span class="lang" role="group" aria-label="Язык">
+      <button type="button" id="lang-ru" data-lang="ru" aria-pressed="true">RU</button>
+      <button type="button" id="lang-en" data-lang="en" aria-pressed="false">EN</button>
+    </span>
+  </nav>
+</header>
+
+<div id="load-error" class="wrap" hidden></div>
+
+<!-- HOME -->
+<main class="view" data-view="home">
+  <section class="wrap hero">
+    <div class="hero-text">
+      <p class="mono eyebrow" id="h-eyebrow">Салехард · ЯНАО</p>
+      <h1 id="h-name">Тимофей<br>Горев</h1>
+      <p class="lead" id="h-lead"></p>
+      <div class="actions">
+        <a class="btn solid" href="#print" data-ui="home.btnWorks">Смотреть работы</a>
+        <a class="btn line" href="#contacts" data-ui="home.btnContact">Связаться</a>
+      </div>
+      <div class="socials" id="socials-home"></div>
+    </div>
+    <div class="hanger-col">
+      <div class="hanger">
+        <div class="strap" aria-hidden="true"><svg><rect width="56" height="150" fill="url(#orn-strap)"/></svg></div>
+        <div class="clip" aria-hidden="true"></div>
+        <article class="badge" aria-label="Бейдж">
+          <div class="badge-top"><span class="mono" id="b-top"></span><span class="expert" id="b-label"></span></div>
+          <div class="badge-id">
+            <img class="badge-photo" id="b-photo" alt="" width="132" height="168">
+            <div class="badge-name"><b id="b-name">Горев<br>Тимофей</b><span id="b-role"></span></div>
+          </div>
+          <div class="badge-rows" id="b-rows"></div>
+          <div class="band" aria-hidden="true"><svg height="32"><rect width="100%" height="32" fill="url(#orn32)"/></svg></div>
+        </article>
+      </div>
+    </div>
+  </section>
+  <nav class="wrap" aria-label="Разделы сайта" style="padding-bottom:80px">
+    <div class="cards">
+      <a class="navcard" href="#work"><b data-ui="nav.work">Работа</b><span data-ui="row.work">Опыт, навыки, резюме</span><i data-ui="open">Открыть →</i></a>
+      <a class="navcard" href="#print"><b data-ui="nav.print">3D-мастерская</b><span data-ui="row.print">Модели и печать на заказ</span><i data-ui="open">Открыть →</i></a>
+      <a class="navcard" href="#about"><b data-ui="nav.about">Обо мне</b><span data-ui="row.about">Награды, путь, новости</span><i data-ui="open">Открыть →</i></a>
+      <a class="navcard" href="#contacts"><b data-ui="nav.contacts">Контакты</b><span data-ui="row.contacts">Написать мне</span><i data-ui="open">Открыть →</i></a>
+    </div>
+  </nav>
+</main>
+
+<!-- WORK -->
+<main class="view" data-view="work" hidden>
+  <div class="wrap page-head">
+    <p class="mono eyebrow" id="w-eyebrow"></p>
+    <h1 data-ui="nav.work">Работа</h1>
+    <p class="lead" id="w-lead"></p>
+  </div>
+  <section class="wrap block"><div class="card flag" id="w-now"></div></section>
+  <section class="wrap block"><h2 class="title" data-ui="t.exp">Опыт</h2><ol class="timeline" id="w-exp"></ol></section>
+  <section class="wrap block"><h2 class="title" data-ui="t.edu">Образование</h2><ol class="timeline" id="w-edu"></ol></section>
+  <section class="wrap block">
+    <h2 class="title" data-ui="t.skills">Что умею</h2>
+    <div class="grid2" id="w-skills"></div>
+    <div style="margin-top:32px" id="resume-slot"></div>
+  </section>
+</main>
+
+<!-- 3D -->
+<main class="view" data-view="print" hidden>
+  <div class="wrap page-head">
+    <p class="mono eyebrow" id="p-eyebrow"></p>
+    <h1 data-ui="nav.print">3D-мастерская</h1>
+    <p class="lead" id="p-lead"></p>
+    <div class="actions" id="p-order"></div>
+  </div>
+  <div class="wrap block" id="p-photo"></div>
+  <section class="wrap block"><div class="grid2" id="p-cards"></div></section>
+  <section class="wrap block"><h2 class="title" data-ui="t.works">Работы</h2><div class="gallery" id="p-works"></div></section>
+</main>
+
+<!-- ABOUT -->
+<main class="view" data-view="about" hidden>
+  <div class="wrap page-head about-head">
+    <div>
+      <p class="mono eyebrow" id="a-eyebrow"></p>
+      <h1 data-ui="nav.about">Обо мне</h1>
+      <p class="lead" id="a-lead"></p>
+    </div>
+    <img class="portrait" id="a-portrait" alt="" width="800" height="1000">
+  </div>
+  <section class="wrap block"><div class="gold" id="a-gold"></div></section>
+  <section class="wrap block"><div class="grid2" id="a-cards"></div></section>
+  <section class="wrap block"><div class="card"><h3 data-ui="t.awards">Награды</h3><ul class="list" id="a-awards"></ul></div></section>
+  <section class="wrap block"><h2 class="title" data-ui="t.news">Обо мне пишут</h2><div class="news" id="a-news"></div></section>
+  <section class="wrap block"><h2 class="title" data-ui="t.projects">Свои проекты</h2><div class="grid2" id="a-projects"></div></section>
+  <section class="wrap block"><div class="card" style="flex-direction:row;flex-wrap:wrap;align-items:center;gap:12px 28px" id="a-sport"></div></section>
+</main>
+
+<!-- CONTACTS -->
+<main class="view" data-view="contacts" hidden>
+  <div class="wrap page-head">
+    <p class="mono eyebrow" data-ui="c.eyebrow">На связи</p>
+    <h1 data-ui="nav.contacts">Контакты</h1>
+    <p class="lead" id="c-lead"></p>
+  </div>
+  <section class="wrap block">
+    <div class="card" style="gap:20px">
+      <p class="mono eyebrow" data-ui="c.mail">Почта</p>
+      <div class="mail" id="mail"></div>
+      <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center">
+        <button type="button" class="btn solid" id="copy" data-ui="c.copy">Скопировать адрес</button>
+        <span class="status" id="copy-status" role="status" aria-live="polite"></span>
+      </div>
+      <p class="mono eyebrow" style="margin-top:16px" data-ui="c.social">Соцсети</p>
+      <div class="pills" id="socials-contacts"></div>
+      <p style="margin-top:16px;color:var(--muted)" id="c-city"></p>
+    </div>
+  </section>
+</main>
+
+<div class="band" aria-hidden="true"><svg height="56"><rect width="100%" height="56" fill="url(#orn56)"/></svg></div>
+<footer class="foot">
+  <div class="wrap">
+    <span class="mono" id="f-copy">© 2026 Тимофей Горев</span>
+    <span class="mono" id="f-mail"></span>
+    <a class="mono" href="#home" data-ui="f.home">На главную ↑</a>
+  </div>
+</footer>
+</div>
+
+<script>
+/* Весь текст и картинки сайта лежат в папке data/ (JSON) и media/. Их удобно править в админке Pages CMS. Здесь только оформление и подписи интерфейса. */
+const UI = {
+  ru: {
+    'nav.work':'Работа','nav.print':'3D-мастерская','nav.about':'Обо мне','nav.contacts':'Контакты',
+    'home.btnWorks':'Смотреть работы','home.btnContact':'Связаться',
+    'row.work':'Опыт, навыки, резюме','row.print':'Модели и печать на заказ','row.about':'Награды, путь, новости','row.contacts':'Написать мне','open':'Открыть →',
+    't.exp':'Опыт','t.edu':'Образование','t.skills':'Что умею','t.works':'Работы','t.awards':'Награды','t.news':'Обо мне пишут','t.projects':'Свои проекты',
+    'c.eyebrow':'На связи','c.mail':'Почта','c.copy':'Скопировать адрес','c.social':'Соцсети','f.home':'На главную ↑',
+    'resume':'Скачать резюме ↓','resumeSoon':'Резюме скоро появится','photo':'[фото]','copied':'Скопировано','copyFail':'Выделите адрес и скопируйте',
+    'loadErr':'Не удалось загрузить данные сайта. Откройте сайт по его адресу в интернете: если открыть index.html прямо с компьютера, браузер не даёт прочитать папку data.'
+  },
+  en: {
+    'nav.work':'Work','nav.print':'3D Workshop','nav.about':'About','nav.contacts':'Contact',
+    'home.btnWorks':'See my work','home.btnContact':'Get in touch',
+    'row.work':'Experience, skills, CV','row.print':'Models and custom printing','row.about':'Awards, path, news','row.contacts':'Write to me','open':'Open →',
+    't.exp':'Experience','t.edu':'Education','t.skills':'Skills','t.works':'Works','t.awards':'Awards','t.news':'In the news','t.projects':'Own projects',
+    'c.eyebrow':'Reach me','c.mail':'Email','c.copy':'Copy address','c.social':'Social','f.home':'Back to home ↑',
+    'resume':'Download CV ↓','resumeSoon':'CV coming soon','photo':'[photo]','copied':'Copied','copyFail':'Select the address and copy it',
+    'loadErr':'Could not load the site data. Open the site by its web address: a browser will not read the data folder when index.html is opened straight from disk.'
+  }
+};
+
+let lang = 'ru';
+try { const s = localStorage.getItem('tg-lang'); if (s === 'en' || s === 'ru') lang = s; } catch (e) {}
+let D = null;
+
+const u = k => UI[lang][k] ?? UI.ru[k] ?? k;
+const L = o => o == null ? '' : (typeof o === 'string' ? o : (o[lang] || o.ru || ''));
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const src = p => p ? String(p).replace(/^\/+/, '') : '';
+const $ = id => document.getElementById(id);
+const fmtDate = d => { const m = /^(\d{4})-(\d{2})-(\d{2})/.exec(d || ''); return m ? `${m[3]}.${m[2]}.${m[1]}` : esc(d); };
+const ext = url => ` href="${esc(url)}" target="_blank" rel="noopener"`;
+const tl = items => (items || []).map(i => `<li><span class="when">${esc(i.when)}</span><span class="what"><b>${esc(L(i.title))}</b> <span>${esc(L(i.text))}</span></span></li>`).join('');
+
+function setImg(el, path, alt){
+  if (path) { el.src = src(path); el.hidden = false; } else { el.removeAttribute('src'); }
+  el.alt = alt;
+}
+
+function render(){
+  document.querySelectorAll('[data-ui]').forEach(el => { el.textContent = u(el.dataset.ui); });
+  document.querySelectorAll('.lang button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.lang === lang)));
+  document.documentElement.lang = lang;
+  if (!D) return;
+  const P = D.profile, W = D.work, R = D.print, A = D.about, N = D.news;
+  const first = L(P.first_name), last = L(P.last_name), full = `${first} ${last}`;
+  document.title = full;
+  $('logo').textContent = full;
+  $('f-copy').textContent = `© ${new Date().getFullYear()} ${full}`;
+  $('f-mail').textContent = P.email || '';
+
+  // home
+  $('h-eyebrow').textContent = L(P.eyebrow);
+  $('h-name').innerHTML = `${esc(first)}<br>${esc(last)}`;
+  $('h-lead').textContent = L(P.lead);
+  $('b-top').textContent = L(P.badge_top);
+  $('b-label').textContent = L(P.badge_label);
+  $('b-name').innerHTML = `${esc(last)}<br>${esc(first)}`;
+  $('b-role').textContent = L(P.badge_role);
+  setImg($('b-photo'), P.badge_photo, full);
+  $('b-rows').innerHTML = (P.badge_rows || []).map(r => `<div class="kv"><span>${esc(L(r.label))}</span><span>${esc(L(r.value))}</span></div>`).join('');
+  const soc = (P.socials || []).filter(s => s.url);
+  $('socials-home').innerHTML = soc.map(s => `<a${ext(s.url)}>${esc(lang === 'en' && s.name_en ? s.name_en : s.name)} ↗</a>`).join('');
+  $('socials-contacts').innerHTML = soc.map(s => `<a${ext(s.url)}>${esc(lang === 'en' && s.name_en ? s.name_en : s.name)}</a>`).join('');
+
+  // work
+  $('w-eyebrow').textContent = L(W.eyebrow);
+  $('w-lead').textContent = L(W.lead);
+  $('w-now').innerHTML = `<p class="mono">${esc(L(W.now_label))}</p><h3>${esc(L(W.now_title))}</h3><p>${esc(L(W.now_text))}</p>
+    <div class="chips">${(W.now_tags || []).map(t => `<span class="chip">${esc(L(t))}</span>`).join('')}</div>`;
+  $('w-exp').innerHTML = tl(W.experience);
+  $('w-edu').innerHTML = tl(W.education);
+  $('w-skills').innerHTML = (W.skills || []).map(s => `<div class="card"><p class="mono eyebrow">${esc(L(s.group))}</p><div class="chips">${
+    String(s.items || '').split(',').map(x => x.trim()).filter(Boolean).map(x => `<span class="chip">${esc(x)}</span>`).join('')}</div></div>`).join('');
+  $('resume-slot').innerHTML = P.resume
+    ? `<a class="btn red"${ext(src(P.resume))}>${esc(u('resume'))}</a>`
+    : `<span class="btn ghost">${esc(u('resumeSoon'))}</span>`;
+
+  // 3D
+  $('p-eyebrow').textContent = L(R.eyebrow);
+  $('p-lead').textContent = L(R.lead);
+  $('p-order').innerHTML = R.order_url ? `<a class="btn red"${ext(R.order_url)}>${esc(L(R.order_label))}</a>` : '';
+  $('p-photo').innerHTML = R.photo ? `<img class="wide-photo" src="${esc(src(R.photo))}" alt="${esc(full)}" width="1600" height="900" loading="lazy">` : '';
+  $('p-cards').innerHTML = (R.cards || []).map(c => `<div class="card"><p class="mono eyebrow">${esc(L(c.label))}</p><h3>${esc(L(c.title))}</h3><p>${esc(L(c.text))}</p></div>`).join('');
+  $('p-works').innerHTML = (R.works || []).map(w => `<article class="work">${
+    w.image ? `<img src="${esc(src(w.image))}" alt="${esc(L(w.title))}" loading="lazy" width="800" height="600">` : `<div class="ph">${esc(u('photo'))}</div>`
+  }<div class="txt"><h3>${esc(L(w.title))}</h3><p>${esc(L(w.text))}</p></div></article>`).join('');
+
+  // about
+  $('a-eyebrow').textContent = L(A.eyebrow);
+  $('a-lead').textContent = L(A.lead);
+  setImg($('a-portrait'), A.portrait, full);
+  $('a-gold').innerHTML = `<div><p class="mono">${esc(L(A.gold_label))}</p><h2>${esc(L(A.gold_title))}</h2><p>${esc(L(A.gold_text))}</p></div>${
+    A.quote ? `<figure class="quote"><p>${esc(A.quote)}</p>${A.quote_url ? `<a${ext(A.quote_url)}>${esc(A.quote_source || A.quote_url)} ↗</a>` : `<span>${esc(A.quote_source)}</span>`}</figure>` : ''}`;
+  $('a-cards').innerHTML = (A.cards || []).map(c => `<div class="card"><h3>${esc(L(c.title))}</h3><p>${esc(L(c.text))}</p></div>`).join('');
+  $('a-awards').innerHTML = (A.awards || []).map(a => `<li>${esc(L(a))}</li>`).join('');
+  const news = [...(N || [])].sort((a, b) => String(b.date).localeCompare(String(a.date)));
+  $('a-news').innerHTML = news.map(n => `<a class="newsitem"${ext(n.url)}><span class="mono">${esc(n.source)} · ${fmtDate(n.date)}</span><b>${esc(n.title)}</b><span class="note">${esc(L(n.note))}</span></a>`).join('');
+  $('a-projects').innerHTML = (A.projects || []).map(c => `<div class="card"><h3>${esc(L(c.title))}</h3><p>${esc(L(c.text))}</p></div>`).join('');
+  $('a-sport').innerHTML = `<span class="mono eyebrow">${esc(L(A.sport_label))}</span><p style="flex:1 1 420px;min-width:0;color:var(--ink)">${esc(L(A.sport_text))}</p>`;
+
+  // contacts
+  $('c-lead').textContent = L(P.contacts_lead);
+  $('mail').textContent = P.email || '';
+  $('c-city').textContent = L(P.city);
+  $('copy-status').textContent = '';
+}
+
+async function load(){
+  const names = ['profile','work','print','about','news'];
+  try {
+    const res = await Promise.all(names.map(n => fetch(`data/${n}.json`, { cache: 'no-cache' }).then(r => { if (!r.ok) throw new Error(n); return r.json(); })));
+    D = {}; names.forEach((n, i) => { D[n] = res[i]; });
+  } catch (e) {
+    const box = $('load-error'); box.hidden = false; box.innerHTML = `<p class="notice">${esc(u('loadErr'))}</p>`;
+  }
+  render();
+}
+
+document.querySelectorAll('.lang button').forEach(b => b.addEventListener('click', () => {
+  lang = b.dataset.lang;
+  try { localStorage.setItem('tg-lang', lang); } catch (e) {}
+  render();
+}));
+
+const VIEWS = ['home','work','print','about','contacts'];
+function show(name, scroll){
+  if (!VIEWS.includes(name)) name = 'home';
+  document.querySelectorAll('.view').forEach(v => {
+    const on = v.dataset.view === name;
+    v.hidden = !on;
+    if (on && name !== 'home') { v.classList.remove('appear'); void v.offsetWidth; v.classList.add('appear'); }
+  });
+  document.querySelectorAll('[data-nav]').forEach(a => {
+    if (a.dataset.nav === name) a.setAttribute('aria-current','page'); else a.removeAttribute('aria-current');
+  });
+  if (scroll) window.scrollTo({ top: 0 });
+}
+document.addEventListener('click', e => {
+  const a = e.target.closest('a[href^="#"]');
+  if (!a) return;
+  const name = a.getAttribute('href').slice(1);
+  if (VIEWS.includes(name)) { e.preventDefault(); show(name, true); try { history.replaceState(null,'','#'+name); } catch (err) {} }
+});
+window.addEventListener('hashchange', () => show(location.hash.slice(1), true));
+
+$('copy').addEventListener('click', () => {
+  const st = $('copy-status');
+  const addr = $('mail').textContent.trim();
+  const fallback = () => {
+    const r = document.createRange(); r.selectNodeContents($('mail'));
+    const sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(r);
+    st.textContent = u('copyFail');
+  };
+  try { navigator.clipboard.writeText(addr).then(() => { st.textContent = u('copied'); }, fallback); }
+  catch (e) { fallback(); }
+});
+
+show(location.hash.slice(1), false);
+render();
+load();
+</script>
+
+</body>
+</html>
