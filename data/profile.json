@@ -1,31 +1,95 @@
 {
-  "first_name": { "ru": "Тимофей", "en": "Timofey" },
-  "last_name": { "ru": "Горев", "en": "Gorev" },
-  "eyebrow": { "ru": "Салехард · ЯНАО", "en": "Salekhard · Yamal, Russia" },
+  "first_name": {
+    "ru": "Тимофей",
+    "en": "Timofey"
+  },
+  "last_name": {
+    "ru": "Горев",
+    "en": "Gorev"
+  },
+  "eyebrow": {
+    "ru": "Салехард · ЯНАО",
+    "en": "Salekhard · Yamal, Russia"
+  },
   "lead": {
-    "ru": "Эксперт по протезированию, преподаватель и системный администратор. Учу студентов делать вещи, которые работают.",
+    "ru": "Эксперт и участник чемпионата, преподаватель и системный администратор. Учу студентов делать вещи, которые работают.",
     "en": "Prosthetics expert, college teacher and system administrator. I teach students to build things that work."
   },
   "badge_photo": "/media/badge.jpg",
-  "badge_top": { "ru": "Профессионалы", "en": "Professionals" },
-  "badge_label": { "ru": "ЭКСПЕРТ", "en": "EXPERT" },
-  "badge_role": { "ru": "Проектирование и изготовление протезов и ортезов", "en": "Design and manufacture of prostheses and orthoses" },
+  "badge_top": {
+    "ru": "Профессионалы",
+    "en": "Professionals"
+  },
+  "badge_label": {
+    "ru": "Эксперт-наставник",
+    "en": "EXPERT"
+  },
+  "badge_role": {
+    "ru": "Проектирование и изготовление протезов и ортезов",
+    "en": "Design and manufacture of prostheses and orthoses"
+  },
   "badge_rows": [
-    { "label": { "ru": "Чемпионат 2025", "en": "Championship 2025" }, "value": { "ru": "Золото ×2", "en": "Gold ×2" } },
-    { "label": { "ru": "Финал 2026", "en": "Final 2026" }, "value": { "ru": "Наставник", "en": "Mentor" } },
-    { "label": { "ru": "Регион", "en": "Region" }, "value": { "ru": "ЯНАО", "en": "Yamal" } }
+    {
+      "label": {
+        "ru": "Чемпионат Профессионалы 2025",
+        "en": "Championship 2025"
+      },
+      "value": {
+        "ru": "Золото ×2",
+        "en": "Gold ×2"
+      }
+    },
+    {
+      "label": {
+        "ru": "Финал Чемпионата 2026",
+        "en": "Final 2026"
+      },
+      "value": {
+        "ru": "Эксперт-наставник",
+        "en": "Mentor"
+      }
+    },
+    {
+      "label": {
+        "ru": "Регион",
+        "en": "Region"
+      },
+      "value": {
+        "ru": "ЯНАО",
+        "en": "Yamal"
+      }
+    }
   ],
-  "email": "gorev.tim10@gmail.com",
-  "city": { "ru": "Салехард, ЯНАО · Россия", "en": "Salekhard, Yamal · Russia" },
+  "email": "gorev.tim10@gmail.com / ego1stQ@yandex.ru",
+  "city": {
+    "ru": "Салехард, ЯНАО · Россия",
+    "en": "Salekhard, Yamal · Russia"
+  },
   "contacts_lead": {
     "ru": "Пишите по работе, 3D-печати или проектам. Быстрее всего отвечаю в Telegram.",
     "en": "Write about work, 3D printing or projects. Telegram is the fastest way to reach me."
   },
   "resume": "/media/resume.pdf",
   "socials": [
-    { "name": "Telegram", "name_en": "Telegram", "url": "https://t.me/timofeygorev" },
-    { "name": "Instagram", "name_en": "Instagram", "url": "https://www.instagram.com/gorevizshd/" },
-    { "name": "GitHub", "name_en": "GitHub", "url": "https://github.com/ego1st192" },
-    { "name": "3D-печать", "name_en": "3D printing", "url": "https://t.me/yamal3d" }
+    {
+      "name": "Telegram",
+      "name_en": "Telegram",
+      "url": "https://t.me/timofeygorev"
+    },
+    {
+      "name": "Instagram",
+      "name_en": "Instagram",
+      "url": "https://www.instagram.com/gorevizshd/"
+    },
+    {
+      "name": "GitHub",
+      "name_en": "GitHub",
+      "url": "https://github.com/ego1st192"
+    },
+    {
+      "name": "3D-печать",
+      "name_en": "3D printing",
+      "url": "https://t.me/yamal3d"
+    }
   ]
 }
